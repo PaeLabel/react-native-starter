@@ -1,0 +1,16 @@
+{
+  "appName": "App name",
+  "languages": {
+    "en": "English",
+    "th": "Thailand"
+  },
+  "common": {
+    "helloWorld": "Hello World...",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "next": "Next",
+    "complete": "Complete",
+    "confirmation": "Confirmation",
+    "confirm": "Confirm"
+  }
+}
