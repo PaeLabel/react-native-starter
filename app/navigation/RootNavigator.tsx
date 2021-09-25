@@ -1,14 +1,14 @@
-import {createAppContainer, createSwitchNavigator} from 'react-navigation'
-import {createStackNavigator} from 'react-navigation-stack'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
 import LoadingScreen from '../screens/LoadingScreen/LoadingScreen'
 import ModalActionSheetScreen from '../screens/ModalActionSheetScreen/ModalActionSheetScreen'
 import ModalConfirmScreen from '../screens/ModalConfirmScreen/ModalConfirmScreen'
 import ModalFailureScreen from '../screens/ModalFailureScreen/ModalFailureScreen'
 import ModalLoadingScreen from '../screens/ModalLoadingScreen/ModalLoadingScreen'
 import ModalSuccessScreen from '../screens/ModalSuccessScreen/ModalSuccessScreen'
-import {Colors} from '../theme'
+import { Colors } from '../theme'
 import AuthStack from './AuthStack'
-import HomeStack from './HomeStack'
+import HomeTab from './HomeTab'
 
 const RootNavigator = createAppContainer(
   createStackNavigator(
@@ -19,7 +19,7 @@ const RootNavigator = createAppContainer(
             Starter: LoadingScreen,
             Auth: AuthStack,
             App: {
-              screen: HomeStack,
+              screen: HomeTab,
               path: '',
             },
           },

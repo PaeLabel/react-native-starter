@@ -1,4 +1,4 @@
-import {createStackNavigator} from 'react-navigation-stack'
+import { createStackNavigator } from 'react-navigation-stack'
 import DemoNavigateScreen from '../screens/DemoNavigateScreen/DemoNavigateScreen'
 import DemoReceiveParamsScreen from '../screens/DemoReceiveParamsScreen/DemoReceiveParamsScreen'
 import HomeScreen from '../screens/HomeScreen/HomeScreen'
