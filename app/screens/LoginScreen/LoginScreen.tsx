@@ -42,6 +42,7 @@ class LoginScreen extends PureComponent<
   static navigationOptions: NavigationStackOptions = {
     title: 'Login',
   }
+
   state = {
     showPassword: true,
     email: '',
@@ -82,7 +83,7 @@ class LoginScreen extends PureComponent<
               bounces={false}
               scrollToOverflowEnabled={false}>
               <View style={styles.contentContainer}>
-                <Logo width={200} height={54} />
+                <Logo width={200} height={100} />
                 <Text style={styles.SubText}>{"Qualilife"}</Text>
                 <View style={styles.content}>
                   <Text style={styles.inputText}>{"Email"}</Text>
@@ -118,7 +119,12 @@ class LoginScreen extends PureComponent<
                       <TouchableOpacity
                         style={styles.eyeButton}
                         onPress={this.showPassword}>
-                        <Eye />
+                        {this.state.showPassword ?
+                          <Eye />
+                          :
+                          <Eye />
+                        }
+
                       </TouchableOpacity>
                     </View>
                   </View>

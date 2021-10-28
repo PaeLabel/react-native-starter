@@ -1,15 +1,15 @@
-import React, {PureComponent} from 'react'
-import {View, Text} from 'react-native'
-import {connect} from 'react-redux'
-import {withTranslation, WithTranslation} from 'react-i18next'
+import hoistNonReactStatics from 'hoist-non-react-statics'
+import React, { PureComponent } from 'react'
+import { withTranslation, WithTranslation } from 'react-i18next'
+import { Text, View } from 'react-native'
+import SafeAreaView from 'react-native-safe-area-view'
 import {
   NavigationStackOptions,
-  NavigationStackProp,
+  NavigationStackProp
 } from 'react-navigation-stack'
-import hoistNonReactStatics from 'hoist-non-react-statics'
-import SafeAreaView from 'react-native-safe-area-view'
-
+import { connect } from 'react-redux'
 import styles from './styles'
+
 
 /**
  * Define navigation params
@@ -49,11 +49,11 @@ class SearchScreen extends PureComponent<
   }
 
   render() {
-    const {title} = this.props
+    const { title } = this.props
     return (
       <SafeAreaView style={styles.safeAreaView}>
         <View style={styles.searchScreen}>
-          <Text style={styles.searchScreenText}>{title}</Text>
+          <Text style={styles.searchScreenText}>{title} TEST</Text>
         </View>
       </SafeAreaView>
     )

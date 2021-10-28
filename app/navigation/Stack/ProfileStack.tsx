@@ -12,7 +12,7 @@ const ProfileStack = createStackNavigator(
         ...Theme.variants.header,
         title: "Profile"
       })
-    }
+    },
   },
   {
     initialRouteName: 'Profile',

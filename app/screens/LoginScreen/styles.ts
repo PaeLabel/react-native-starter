@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
   SubText: {
     ...Theme.text.header1,
     marginTop: 50,
+    fontSize: 20,
   },
   inputText: {
     ...Theme.text.title,

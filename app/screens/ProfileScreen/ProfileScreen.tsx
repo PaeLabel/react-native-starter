@@ -56,7 +56,7 @@ class ProfileScreen extends PureComponent<
   }
 
   handleGoToNextScreen = () => {
-    this.props.navigation.navigate('DemoNavigate')
+    this.props.navigation.navigate('Starter')
   }
 
   handleGoToNextScreenWithParams = () => {

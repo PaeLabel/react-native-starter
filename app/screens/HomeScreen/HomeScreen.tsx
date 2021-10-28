@@ -73,19 +73,12 @@ class HomeScreen extends PureComponent<
   }
 
   handleSkip = () => {
-    this.props.navigation.navigate('ModalFailure', {
-      title: 'Skip !!',
-      description: 'Description for failure',
-      button: [{
-        text: 'OK', onPress: () => {
-          this.props.navigation.pop()
-        }
-      }],
-    })
+
+    this.props.navigation.navigate('Home2')
   }
 
   showChallenge = () => {
-    this.setState({ challenge: true })
+    this.setState({ showChallenge: true })
   }
 
   render() {
@@ -96,7 +89,7 @@ class HomeScreen extends PureComponent<
         <View style={styles.homeScreen}>
 
           {this.state.showChallenge ?
-            <View>
+            <>
               <Box height={200} backgroundColor={"#000"} borderRadius={10} padding={20}>
                 <Text style={styles.txtTitle}>
                   TODAY’s CHALLENGE IS
@@ -111,7 +104,7 @@ class HomeScreen extends PureComponent<
                 <Box width={20} />
                 <OutlineButton text="Skip" onPress={this.handleSkip} width={150} color={Colors.BLACK} />
               </View>
-            </View>
+            </>
             :
             <Button text="Show challenge" onPress={this.showChallenge} backgroundColor={"#000"} borderColor={"#FFF"} />
           }

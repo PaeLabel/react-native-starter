@@ -20,7 +20,7 @@ const HomeTab = createBottomTabNavigator(
       screen: HomeStack, // CADET_BLUE
       navigationOptions: (props) => ({
         tabBarIcon: ({ tintColor }) => (<HomeTabHome fill={tintColor} />),
-        tabBarVisible: props.navigation.state.routes[props.navigation.state.index].routeName === 'Home' ? true : false,
+        // tabBarVisible: props.navigation.state.routes[props.navigation.state.index].routeName === 'Home' ? true : false,
         title: "Home"
       }),
 
@@ -29,7 +29,7 @@ const HomeTab = createBottomTabNavigator(
       screen: SearchStack,
       navigationOptions: (props) => ({
         tabBarIcon: ({ tintColor }) => (<Search fill={tintColor} />),
-        tabBarVisible: props.navigation.state.routes[props.navigation.state.index].routeName === 'Search' ? true : false,
+        // tabBarVisible: props.navigation.state.routes[props.navigation.state.index].routeName === 'Search' ? true : false,
         title: "Search"
       }),
     },
@@ -37,7 +37,7 @@ const HomeTab = createBottomTabNavigator(
       screen: PostStack,
       navigationOptions: (props) => ({
         tabBarIcon: ({ tintColor }) => (<New fill={tintColor} />),
-        tabBarVisible: props.navigation.state.routes[props.navigation.state.index].routeName === 'Post' ? true : false,
+        // tabBarVisible: props.navigation.state.routes[props.navigation.state.index].routeName === 'Post' ? true : false,
         title: "Post"
       }),
     },
@@ -45,7 +45,7 @@ const HomeTab = createBottomTabNavigator(
       screen: MessageStack,
       navigationOptions: (props) => ({
         tabBarIcon: ({ tintColor }) => (<Message fill={tintColor} />),
-        tabBarVisible: props.navigation.state.routes[props.navigation.state.index].routeName === 'Message' ? true : false,
+        // tabBarVisible: props.navigation.state.routes[props.navigation.state.index].routeName === 'Message' ? true : false,
         title: "Message"
       }),
     },
@@ -53,7 +53,7 @@ const HomeTab = createBottomTabNavigator(
       screen: ProfileStack,
       navigationOptions: (props) => ({
         tabBarIcon: ({ tintColor }) => (<MoreIcon fill={tintColor} />),
-        tabBarVisible: props.navigation.state.routes[props.navigation.state.index].routeName === 'Profile' ? true : false,
+        // tabBarVisible: props.navigation.state.routes[props.navigation.state.index].routeName === 'Profile' ? true : false,
         // title: "Profile"
       }),
     },
