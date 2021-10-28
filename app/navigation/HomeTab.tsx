@@ -1,7 +1,9 @@
 import React from 'react'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import HomeTabHome from '../assets/icons/Home/home.svg'
+import Message from '../assets/icons/Home/message.svg'
 import MoreIcon from '../assets/icons/Home/more_icon.svg'
+import New from '../assets/icons/Home/new.svg'
 import Search from '../assets/icons/Home/search.svg'
 import { Theme } from '../theme'
 import HomeStack from './Stack/HomeStack'
@@ -18,6 +20,7 @@ const HomeTab = createBottomTabNavigator(
       screen: HomeStack, // CADET_BLUE
       navigationOptions: (props) => ({
         tabBarIcon: ({ tintColor }) => (<HomeTabHome fill={tintColor} />),
+        tabBarVisible: props.navigation.state.routes[props.navigation.state.index].routeName === 'Home' ? true : false,
         title: "Home"
       }),
 
@@ -26,20 +29,23 @@ const HomeTab = createBottomTabNavigator(
       screen: SearchStack,
       navigationOptions: (props) => ({
         tabBarIcon: ({ tintColor }) => (<Search fill={tintColor} />),
+        tabBarVisible: props.navigation.state.routes[props.navigation.state.index].routeName === 'Search' ? true : false,
         title: "Search"
       }),
     },
     Post: {
       screen: PostStack,
       navigationOptions: (props) => ({
-        tabBarIcon: ({ tintColor }) => (<Search fill={tintColor} />),
+        tabBarIcon: ({ tintColor }) => (<New fill={tintColor} />),
+        tabBarVisible: props.navigation.state.routes[props.navigation.state.index].routeName === 'Post' ? true : false,
         title: "Post"
       }),
     },
     Message: {
       screen: MessageStack,
       navigationOptions: (props) => ({
-        tabBarIcon: ({ tintColor }) => (<Search fill={tintColor} />),
+        tabBarIcon: ({ tintColor }) => (<Message fill={tintColor} />),
+        tabBarVisible: props.navigation.state.routes[props.navigation.state.index].routeName === 'Message' ? true : false,
         title: "Message"
       }),
     },
@@ -47,14 +53,15 @@ const HomeTab = createBottomTabNavigator(
       screen: ProfileStack,
       navigationOptions: (props) => ({
         tabBarIcon: ({ tintColor }) => (<MoreIcon fill={tintColor} />),
-        title: "Profile"
+        tabBarVisible: props.navigation.state.routes[props.navigation.state.index].routeName === 'Profile' ? true : false,
+        // title: "Profile"
       }),
     },
   },
   {
     initialRouteName: 'Home',
     tabBarOptions: {
-      showLabel: true,
+      showLabel: false,
       showIcon: true,
       activeTintColor: Theme.variants.tabBar.activeTintColor,
       inactiveTintColor: Theme.variants.tabBar.inactiveTintColor,

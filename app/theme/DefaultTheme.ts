@@ -9,24 +9,26 @@ const spacing = (spacer: number, factor: number = SPACER) => Core.spacing(spacer
 const rounding = (roundness: number, factor: number = ROUNDNESS) => Core.rounding(roundness, factor)
 
 const colorPalette = {
-  primary: '#333333',
-  secondary: '#333333',
-  background: '#ffffff',
-  text: '#333333',
+  primary: '#472f92',
+  secondary: '#00b490',
+  background: '#f9fafc',
+  backdrop: Colors.RGBA('#0c0d0d', 0.5),
+  shadow: Colors.RGBA('#455B63', 0.8),
+  text: '#172843',
   text2: '#505e69',
-  border: '#333333',
+  border: '#e2e5ed',
   surface: '#ffffff',
   borderSurface: '#dee1ea',
-  success: '#333333',
-  info: '#333333',
-  warning: '#333333',
-  error1: '#333333',
-  error2: '#333333',
-  link: '#333333',
-  iconText: '#333333',
-  disabledButton: '#333333',
-  disabledField: '#333333',
-  gradient: ['#ff4946', '#19c155']
+  success: '#19c155',
+  info: '#2db7f5',
+  warning: '#ff9f2e',
+  error1: '#ff4946',
+  error2: '#e8495b',
+  link: '#0059e8',
+  iconText: '#505e69',
+  disabledButton: '#a8b1c1',
+  disabledField: '#f2f2f5',
+  gradient: ['#00b490', '#472f92']
 }
 
 const textStyle = {

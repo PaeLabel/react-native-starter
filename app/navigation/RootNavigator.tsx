@@ -24,7 +24,7 @@ const RootNavigator = createAppContainer(
             },
           },
           {
-            initialRouteName: 'App',
+            initialRouteName: 'Starter',
             navigationOptions: {
               cardStyle: {
                 backgroundColor: Colors.WHITE,

@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native'
-import {Colors, Fonts} from '../../theme'
+import { StyleSheet } from 'react-native'
+import { Colors, Fonts } from '../../theme'
 
 const styles = StyleSheet.create({
   safeAreaView: {
@@ -16,6 +16,26 @@ const styles = StyleSheet.create({
     color: Colors.TUNDORA,
     textAlign: 'center',
   },
+  txtTitle: {
+    color: Colors.WHITE,
+    fontSize: 25,
+    textAlign: 'center',
+    marginBottom: 20,
+    fontWeight: 'bold'
+  },
+  txtChallenge: {
+    color: Colors.WHITE,
+    fontSize: 20,
+    textAlign: 'center',
+
+  },
+  boxBtn: {
+    flex: 1,
+    flexDirection: 'row',
+    marginTop: 20,
+    alignContent: 'center',
+    alignSelf: 'center'
+  }
 })
 
 export default styles

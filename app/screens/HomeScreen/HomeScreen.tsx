@@ -1,21 +1,18 @@
 import hoistNonReactStatics from 'hoist-non-react-statics'
-import i18next from 'i18next'
-import React, {PureComponent} from 'react'
-import {withTranslation, WithTranslation} from 'react-i18next'
-import {StatusBar, Text, View} from 'react-native'
+import React, { PureComponent } from 'react'
+import { withTranslation, WithTranslation } from 'react-i18next'
+import { StatusBar, View } from 'react-native'
+import { Text } from 'react-native-paper'
 import SafeAreaView from 'react-native-safe-area-view'
 import {
   NavigationStackOptions,
-  NavigationStackProp,
+  NavigationStackProp
 } from 'react-navigation-stack'
-import {connect} from 'react-redux'
-import {IconSource} from '../../assets'
+import { connect } from 'react-redux'
 import Box from '../../components/Common/Box/Box'
 import Button from '../../components/Common/Button/Button'
-import GradientButton from '../../components/Common/GradientButton/GradientButton'
 import OutlineButton from '../../components/Common/OutlineButton/OutlineButton'
-import {Colors} from '../../theme'
-import {getLanguageCode} from '../../utils/multiLanguage'
+import { Colors } from '../../theme'
 import styles from './styles'
 
 /**
@@ -35,7 +32,10 @@ export type HomeScreenProps = {
 /**
  * Define component state type
  */
-type HomeScreenState = {}
+type HomeScreenState = {
+  showChallenge: boolean
+  challenge: boolean
+}
 
 class HomeScreen extends PureComponent<
   HomeScreenProps & WithTranslation,
@@ -48,6 +48,11 @@ class HomeScreen extends PureComponent<
     title: 'HomeScreen',
   }
 
+  state = {
+    showChallenge: false,
+    challenge: false
+  };
+
   /**
    * Navigation configuration
    */
@@ -55,118 +60,65 @@ class HomeScreen extends PureComponent<
     title: 'Home', // Set navbar text title
   }
 
-  handleGoToNextScreen = () => {
-    this.props.navigation.navigate('DemoNavigate')
-  }
-
-  handleGoToNextScreenWithParams = () => {
-    this.props.navigation.navigate('DemoReceiveParams', {
-      testParamName: 'Say hi',
-    })
-  }
-
-  handleTestModalSuccess = () => {
+  handleAccept = () => {
     this.props.navigation.navigate('ModalSuccess', {
       title: 'Success !!',
       description: 'Description for success',
-      button: [{text: 'OK', onPress: () => this.props.navigation.pop()}],
+      button: [{
+        text: 'OK', onPress: () => {
+          this.props.navigation.pop()
+        }
+      }],
     })
   }
 
-  handleTestModalFailure = () => {
+  handleSkip = () => {
     this.props.navigation.navigate('ModalFailure', {
-      title: 'Error !!',
+      title: 'Skip !!',
       description: 'Description for failure',
-      button: [{text: 'OK', onPress: () => this.props.navigation.pop()}],
+      button: [{
+        text: 'OK', onPress: () => {
+          this.props.navigation.pop()
+        }
+      }],
     })
   }
 
-  handleTestActionSheet = () => {
-    this.props.navigation.navigate('ModalActionSheet', {
-      items: [
-        {
-          icon: IconSource.ARROW_RIGHT,
-          title: 'Test item 1',
-          onPress: () => {
-            this.props.navigation.pop()
-          },
-        },
-        {
-          icon: IconSource.ARROW_RIGHT,
-          title: 'Test item 2',
-          onPress: () => {
-            this.props.navigation.pop()
-          },
-        },
-      ],
-    })
-  }
-
-  handleTestModalConfirm = () => {
-    this.props.navigation.navigate('ModalConfirm', {
-      title: 'Are you confirm?',
-      description: 'description',
-      button: [
-        {
-          text: 'Cancel',
-          onPress: () => this.props.navigation.pop(),
-          textColor: Colors.BLUEYGREY,
-        },
-        {
-          text: 'OK',
-          onPress: () => this.props.navigation.pop(),
-          textColor: Colors.AQUAMARINE,
-        },
-      ],
-    })
-  }
-
-  handleSwitchLang = () => {
-    const currentLang = getLanguageCode()
-    i18next.changeLanguage(currentLang === 'en' ? 'th' : 'en')
+  showChallenge = () => {
+    this.setState({ challenge: true })
   }
 
   render() {
-    const {t} = this.props
+    const { title } = this.props
     return (
       <SafeAreaView style={styles.safeAreaView}>
-        <StatusBar backgroundColor={Colors.AZURE} />
+        <StatusBar backgroundColor={Colors.BLACK} />
         <View style={styles.homeScreen}>
-          <Box height={50} />
-          <Text style={styles.homeScreenText}>{t('common:helloWorld')}</Text>
-          <Box height={50} />
-          <Button
-            text="Test goto next screen"
-            onPress={this.handleGoToNextScreen}
-          />
-          <Box height={8} />
-          <Button
-            text="Test goto next screen with params"
-            onPress={this.handleGoToNextScreenWithParams}
-          />
-          <Box height={8} />
-          <GradientButton
-            text="Test modal success"
-            onPress={this.handleTestModalSuccess}
-          />
-          <Box height={8} />
-          <OutlineButton
-            text="Test modal failure"
-            onPress={this.handleTestModalFailure}
-          />
-          <Box height={8} />
-          <OutlineButton
-            text="Test modal action sheet"
-            onPress={this.handleTestActionSheet}
-          />
-          <Box height={8} />
-          <OutlineButton
-            text="Test modal confirm"
-            onPress={this.handleTestModalConfirm}
-          />
-          <Box height={8} />
-          <Button text="Test switch language" onPress={this.handleSwitchLang} />
+
+          {this.state.showChallenge ?
+            <View>
+              <Box height={200} backgroundColor={"#000"} borderRadius={10} padding={20}>
+                <Text style={styles.txtTitle}>
+                  TODAY’s CHALLENGE IS
+                </Text>
+                <Text style={styles.txtChallenge}>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                </Text>
+              </Box>
+
+              <View style={styles.boxBtn}>
+                <OutlineButton text="Accept" onPress={this.handleAccept} width={150} color={Colors.BLACK} />
+                <Box width={20} />
+                <OutlineButton text="Skip" onPress={this.handleSkip} width={150} color={Colors.BLACK} />
+              </View>
+            </View>
+            :
+            <Button text="Show challenge" onPress={this.showChallenge} backgroundColor={"#000"} borderColor={"#FFF"} />
+          }
+
+
         </View>
+
       </SafeAreaView>
     )
   }

@@ -1,10 +1,10 @@
-import {createStackNavigator} from 'react-navigation-stack'
-import WelcomeScreen from '../screens/WelcomeScreen/WelcomeScreen'
+import { createStackNavigator } from 'react-navigation-stack'
+import LoginScreen from '../screens/LoginScreen/LoginScreen'
 
 const AuthStack = createStackNavigator(
   {
     Welcome: {
-      screen: WelcomeScreen,
+      screen: LoginScreen,
       navigationOptions: {
         headerShown: false,
       },
@@ -13,6 +13,12 @@ const AuthStack = createStackNavigator(
   {
     initialRouteName: 'Welcome',
     mode: 'card',
+    defaultNavigationOptions: {
+      cardStyle: {
+        backgroundColor: 'transparent',
+      },
+      animationEnabled: false,
+    },
   },
 )
 

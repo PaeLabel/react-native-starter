@@ -51,11 +51,11 @@ class LoadingScreen extends PureComponent<
   }
 
   componentDidMount() {
-    const {navigation} = this.props
+    const { navigation } = this.props
 
     setTimeout(() => {
-      navigation.navigate('App')
-    }, 3000)
+      navigation.navigate('Auth')
+    }, 1500)
   }
 
   render() {
@@ -66,7 +66,8 @@ class LoadingScreen extends PureComponent<
         <StatusBar
           translucent
           backgroundColor="transparent"
-          barStyle="light-content"
+          barStyle="dark-content"
+
         />
         <Text style={styles.textBrand}>Loading...</Text>
         <Text style={styles.textVersion}>
