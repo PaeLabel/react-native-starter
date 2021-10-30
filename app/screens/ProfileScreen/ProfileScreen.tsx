@@ -1,181 +1,123 @@
 import hoistNonReactStatics from 'hoist-non-react-statics'
-import i18next from 'i18next'
 import React, { PureComponent } from 'react'
 import { withTranslation, WithTranslation } from 'react-i18next'
-import { ScrollView, Text, View } from 'react-native'
+import { Image, ScrollView, Text, View } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import SafeAreaView from 'react-native-safe-area-view'
 import {
   NavigationStackOptions,
   NavigationStackProp
 } from 'react-navigation-stack'
 import { connect } from 'react-redux'
-import { IconSource } from '../../assets'
-import Box from '../../components/Common/Box/Box'
-import Button from '../../components/Common/Button/Button'
-import GradientButton from '../../components/Common/GradientButton/GradientButton'
-import OutlineButton from '../../components/Common/OutlineButton/OutlineButton'
-import { Colors } from '../../theme'
-import { getLanguageCode } from '../../utils/multiLanguage'
+import LogoutIcon from '../../assets/icons/Profile/logout_icon.svg'
+import EditIcon from '../../assets/icons/Profile/pen_icon.svg'
+import { Theme } from '../../theme'
 import styles from './styles'
 
-/**
- * Define navigation params
- */
 export type ProfileScreenParams = {}
 export type NavigationType = NavigationStackProp<{}, ProfileScreenParams>
 
-/**
- * Define component props type
- */
+
 export type ProfileScreenProps = {
   title: string
   navigation: NavigationType
+
+  logout: any
 }
 
-/**
- * Define component state type
- */
 type ProfileScreenState = {}
 
 class ProfileScreen extends PureComponent<
   ProfileScreenProps & WithTranslation,
   ProfileScreenState
 > {
-  /**
-   * Default props
-   */
+
   static defaultProps = {
     title: 'ProfileScreen',
   }
 
-  /**
-   * Navigation configuration
-   */
+
   static navigationOptions: NavigationStackOptions = {
-    title: 'Profile', // Set navbar text title
+    title: 'Profile',
   }
 
-  handleGoToNextScreen = () => {
-    this.props.navigation.navigate('Starter')
-  }
-
-  handleGoToNextScreenWithParams = () => {
-    this.props.navigation.navigate('DemoReceiveParams', {
-      testParamName: 'Say hi',
-    })
-  }
-
-  handleTestModalSuccess = () => {
-    this.props.navigation.navigate('ModalSuccess', {
-      title: 'Success !!',
-      description: 'Description for success',
-      button: [{ text: 'OK', onPress: () => this.props.navigation.pop() }],
-    })
-  }
-
-  handleTestModalFailure = () => {
-    this.props.navigation.navigate('ModalFailure', {
-      title: 'Error !!',
-      description: 'Description for failure',
-      button: [{ text: 'OK', onPress: () => this.props.navigation.pop() }],
-    })
-  }
-
-  handleTestActionSheet = () => {
-    this.props.navigation.navigate('ModalActionSheet', {
-      items: [
-        {
-          icon: IconSource.ARROW_RIGHT,
-          title: 'Test item 1',
-          onPress: () => {
-            this.props.navigation.pop()
-          },
-        },
-        {
-          icon: IconSource.ARROW_RIGHT,
-          title: 'Test item 2',
-          onPress: () => {
-            this.props.navigation.pop()
-          },
-        },
-      ],
-    })
-  }
-
-  handleTestModalConfirm = () => {
-    this.props.navigation.navigate('ModalConfirm', {
-      title: 'Are you confirm?',
-      description: 'description',
-      button: [
-        {
-          text: 'Cancel',
-          onPress: () => this.props.navigation.pop(),
-          textColor: Colors.BLUEYGREY,
-        },
-        {
-          text: 'OK',
-          onPress: () => this.props.navigation.pop(),
-          textColor: Colors.AQUAMARINE,
-        },
-      ],
-    })
-  }
-
-  handleSwitchLang = () => {
-    const currentLang = getLanguageCode()
-    i18next.changeLanguage(currentLang === 'en' ? 'th' : 'en')
+  handleLogout = () => {
+    this.props.navigation.navigate("Auth")
   }
 
   render() {
-    const { t } = this.props
+    const { } = this.props
+
+    const user = {
+      pictureUrl: null,
+      firstName: 'User',
+      lastName: 'Lastname',
+      position: 'UserTest'
+    }
+
     return (
       <SafeAreaView style={styles.safeAreaView}>
-        <ScrollView >
-          {/* <StatusBar backgroundColor={Colors.AZURE} /> */}
-          <View style={styles.profileScreen}>
-            <Text style={styles.profileScreenText}>{t('common:helloWorld')}</Text>
-            <Box height={50} />
-            <Button
-              text="Test goto next screen"
-              onPress={this.handleGoToNextScreen}
-            />
-            <Box height={8} />
-            <Button
-              text="Test goto next screen with params"
-              onPress={this.handleGoToNextScreenWithParams}
-            />
-            <Box height={8} />
-            <GradientButton
-              text="Test modal success"
-              onPress={this.handleTestModalSuccess}
-            />
-            <Box height={8} />
-            <OutlineButton
-              text="Test modal failure"
-              onPress={this.handleTestModalFailure}
-            />
-            <Box height={8} />
-            <OutlineButton
-              text="Test modal action sheet"
-              onPress={this.handleTestActionSheet}
-            />
-            <Box height={8} />
-            <OutlineButton
-              text="Test modal confirm"
-              onPress={this.handleTestModalConfirm}
-            />
-            <Box height={8} />
-            <Button text="Test switch language" onPress={this.handleSwitchLang} />
+        <ScrollView
+          style={styles.scrollView}
+          contentContainerStyle={styles.contentContainerStyle}>
+          <View style={styles.wrapUserData}>
+            <View style={styles.wrapUserLeft}>
+              <View style={styles.wrapImage}>
+                <Image
+                  source={{
+                    uri:
+                      user.pictureUrl ||
+                      'https://bpnsgdvsmcsa.blob.core.windows.net/general/DEFAULT_USER_ICON_40.png',
+                  }}
+                  style={styles.imageUser}
+                />
+              </View>
+              <View style={styles.wrapProfileText}>
+                <Text style={styles.profileScreenText}>
+                  {user.firstName} {user.lastName}
+                </Text>
+                <Text style={styles.profileDescText}>
+                  {user.position}
+                </Text>
+              </View>
+            </View>
+            <View style={styles.wrapEditButton}>
+              <Text style={styles.EditText}>{"Edit"}</Text>
+              <EditIcon fill={Theme.colors.iconText} />
+            </View>
           </View>
+
+
+          <Text style={styles.versionText}>
+            {"Demo"} (0.0.1)
+          </Text>
+
+          <View style={styles.wrapList}>
+            <TouchableOpacity
+              onPress={() => {
+                this.handleLogout()
+              }}>
+              <View style={styles.listContainer}>
+                <View style={styles.wrapListLeft}>
+                  <View style={styles.listIcon}>
+                    <LogoutIcon />
+                  </View>
+                  <Text style={styles.listText}>
+                    {"Logout"}
+                  </Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          </View>
+
+
         </ScrollView>
       </SafeAreaView>
     )
   }
 }
 
-/**
- * Select redux state
- */
+
 const mapStateToProps = (reduxState: any) => ({
   // Selected redux state hare
 })
@@ -193,7 +135,4 @@ const ProfileScreenWithRedux = connect(
 )(ProfileScreen)
 const ProfileScreenWithTranslate = withTranslation()(ProfileScreenWithRedux)
 
-export default hoistNonReactStatics(
-  ProfileScreenWithTranslate,
-  ProfileScreen,
-)
+export default hoistNonReactStatics(ProfileScreenWithTranslate, ProfileScreen)

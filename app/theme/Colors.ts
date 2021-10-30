@@ -1,4 +1,4 @@
-import {hexToRgbA} from '../utils'
+import { hexToRgbA } from '../utils'
 
 const COLORS = {
   AZURE: '#00b490',
@@ -13,6 +13,8 @@ const COLORS = {
   BLACK: '#000000',
   TUNDORA: '#414141',
   TRANSPARENT: 'transparent',
+  RED_PINK: '#FF4D00',
+  PINK_RED: '#FF00D6',
   RGBA: hexToRgbA,
 }
 

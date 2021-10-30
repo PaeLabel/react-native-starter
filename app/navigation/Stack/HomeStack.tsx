@@ -1,9 +1,8 @@
 import React from 'react'
 import { createStackNavigator } from 'react-navigation-stack'
-import StackBackHome from '../../components/Stack/StackBackHome/StackBackHome'
-import StackMenu from '../../components/Stack/StackMenu/StackMenu'
+import StackNone from '../../components/Stack/StackNone/StackNone'
+import ChallengeScreen from '../../screens/ChallengeScreen/ChallengeScreen'
 import HomeScreen from '../../screens/HomeScreen/HomeScreen'
-import TestScreen from '../../screens/TestScreen/TestScreen'
 import { Theme } from '../../theme'
 
 const HomeStack = createStackNavigator(
@@ -18,13 +17,13 @@ const HomeStack = createStackNavigator(
       })
     },
 
-    Home2: {
-      screen: TestScreen,
+    Challenge: {
+      screen: ChallengeScreen,
       navigationOptions: ({ navigation }) => ({
-        headerLeft: () => (<StackBackHome navigationProp={navigation} />),
-        headerRight: () => (<StackMenu navigationProp={navigation} />),
+        headerLeft: () => (<StackNone navigationProp={navigation} />),
+        headerRight: () => (<StackNone navigationProp={navigation} />),
         ...Theme.variants.header,
-        title: "Home2",
+        title: "Challenge",
 
       })
     },

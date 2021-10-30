@@ -4,10 +4,10 @@ import {
   Text,
   TextStyle,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import {Colors} from '../../../theme'
+import { Colors } from '../../../theme'
 import IconImage from '../IconImage/IconImage'
 import styles from './styles'
 
@@ -39,15 +39,15 @@ const GradientButton = ({
       onPress={() => requestAnimationFrame(onPress)}
       disabled={disabledWithoutStyle || disabled}>
       <LinearGradient
-        start={{x: 0, y: 0.75}}
-        end={{x: 1, y: 0.25}}
+        start={{ x: 0, y: 0.75 }}
+        end={{ x: 1, y: 0.25 }}
         locations={[0.0, 1.0]}
         colors={
           disabled
             ? [Colors.VERYLIGHTPINK, Colors.VERYLIGHTPINK]
-            : [Colors.AZURE, Colors.AQUAMARINE]
+            : [Colors.RED_PINK, Colors.PINK_RED]
         }
-        style={[styles.button, width ? {width} : {}, height ? {height} : {}]}>
+        style={[styles.button, width ? { width } : {}, height ? { height } : {}]}>
         <View
           style={[styles.buttonContent, disabled ? styles.buttonDisabled : {}]}>
           {icon && (
@@ -80,7 +80,7 @@ GradientButton.defaultProps = {
   disabled: false,
   disabledWithoutStyle: false,
   tintColor: Colors.WHITE,
-  onPress() {},
+  onPress() { },
 }
 
 export default GradientButton

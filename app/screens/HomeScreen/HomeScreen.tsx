@@ -10,7 +10,6 @@ import {
 } from 'react-navigation-stack'
 import { connect } from 'react-redux'
 import Box from '../../components/Common/Box/Box'
-import Button from '../../components/Common/Button/Button'
 import OutlineButton from '../../components/Common/OutlineButton/OutlineButton'
 import { Colors } from '../../theme'
 import styles from './styles'
@@ -49,7 +48,7 @@ class HomeScreen extends PureComponent<
   }
 
   state = {
-    showChallenge: false,
+    showChallenge: true,
     challenge: false
   };
 
@@ -61,34 +60,40 @@ class HomeScreen extends PureComponent<
   }
 
   handleAccept = () => {
-    this.props.navigation.navigate('ModalSuccess', {
-      title: 'Success !!',
-      description: 'Description for success',
-      button: [{
-        text: 'OK', onPress: () => {
-          this.props.navigation.pop()
-        }
-      }],
+    this.props.navigation.navigate('ModalConfirm', {
+      title: 'Chanllenge confirm?',
+      description: 'You want to confirm this challenge ?',
+      button: [
+        {
+          text: 'Cancel',
+          onPress: () => this.props.navigation.pop(),
+          textColor: Colors.BLUEYGREY,
+        },
+        {
+          text: 'OK',
+          onPress: () => this.props.navigation.navigate('Challenge'),
+          textColor: Colors.AQUAMARINE,
+        },
+      ],
     })
   }
 
   handleSkip = () => {
 
-    this.props.navigation.navigate('Home2')
-  }
-
-  showChallenge = () => {
-    this.setState({ showChallenge: true })
+    console.log("SKIP")
   }
 
   render() {
     const { title } = this.props
+
+    if (this.state.challenge) { this.props.navigation.navigate('Challenge') }
+
     return (
       <SafeAreaView style={styles.safeAreaView}>
         <StatusBar backgroundColor={Colors.BLACK} />
         <View style={styles.homeScreen}>
 
-          {this.state.showChallenge ?
+          {this.state.showChallenge &&
             <>
               <Box height={200} backgroundColor={"#000"} borderRadius={10} padding={20}>
                 <Text style={styles.txtTitle}>
@@ -105,8 +110,6 @@ class HomeScreen extends PureComponent<
                 <OutlineButton text="Skip" onPress={this.handleSkip} width={150} color={Colors.BLACK} />
               </View>
             </>
-            :
-            <Button text="Show challenge" onPress={this.showChallenge} backgroundColor={"#000"} borderColor={"#FFF"} />
           }
 
 

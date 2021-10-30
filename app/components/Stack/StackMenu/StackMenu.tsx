@@ -2,7 +2,6 @@ import React, { memo } from 'react'
 import { withTranslation, WithTranslation } from 'react-i18next'
 import { TouchableWithoutFeedback, View } from 'react-native'
 import { NavigationStackProp } from 'react-navigation-stack'
-import HomeStackMenu from '../../../assets/icons/Home/menu.svg'
 import styles from './styles'
 
 
@@ -16,10 +15,10 @@ export type StackMenuProps = {
 const StackMenu = ({ navigationProp }: StackMenuProps & WithTranslation) => {
   return (
     <TouchableWithoutFeedback
-      onPress={() => navigationProp.toggleDrawer()}
+      onPress={() => console.log("Click Menu")}
     >
       <View style={styles.stackMenu}>
-        <HomeStackMenu />
+        {/* <HomeStackMenu /> */}
       </View>
     </TouchableWithoutFeedback>
   )

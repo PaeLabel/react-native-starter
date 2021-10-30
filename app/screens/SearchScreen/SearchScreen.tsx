@@ -1,13 +1,14 @@
 import hoistNonReactStatics from 'hoist-non-react-statics'
 import React, { PureComponent } from 'react'
 import { withTranslation, WithTranslation } from 'react-i18next'
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 import SafeAreaView from 'react-native-safe-area-view'
 import {
   NavigationStackOptions,
   NavigationStackProp
 } from 'react-navigation-stack'
 import { connect } from 'react-redux'
+import ChallengeMainComponent from '../../components/Search/ChallengeMainComponent/ChallengeMainComponent'
 import styles from './styles'
 
 
@@ -50,10 +51,41 @@ class SearchScreen extends PureComponent<
 
   render() {
     const { title } = this.props
+
+    const data = [{
+      _id: 0,
+      title: "Test1",
+      status: true,
+      description: "Description test",
+      score: 100,
+      images: {
+        url: "https://miro.medium.com/max/1024/1*xDi2csEAWxu95IEkaNdFUQ.png",
+      },
+      timestamp: "2020-12-04T03:44:11",
+      readed: true,
+    },
+    {
+      _id: 1,
+      title: "Test2",
+      status: false,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+      score: 100,
+      images: {
+        url: "https://miro.medium.com/max/1024/1*xDi2csEAWxu95IEkaNdFUQ.png",
+      },
+      timestamp: "2020-12-04T03:44:11",
+      readed: true,
+    }]
+
+
+
     return (
       <SafeAreaView style={styles.safeAreaView}>
         <View style={styles.searchScreen}>
-          <Text style={styles.searchScreenText}>{title} TEST</Text>
+          <ChallengeMainComponent
+            navigation={this.props.navigation}
+            data={data}
+          />
         </View>
       </SafeAreaView>
     )

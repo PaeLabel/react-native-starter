@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native'
-import {Colors, Fonts} from '../../theme'
+import { StyleSheet } from 'react-native'
+import { Colors, Fonts } from '../../theme'
 
 const styles = StyleSheet.create({
   safeAreaView: {
@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
   },
   welcomeScreen: {
     flex: 1,
+    padding: 24,
   },
   welcomeScreenText: {
     fontFamily: Fonts.FONT_FAMILY.ROBOTO_BOLD,

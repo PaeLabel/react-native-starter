@@ -28,7 +28,7 @@ const colorPalette = {
   iconText: '#505e69',
   disabledButton: '#a8b1c1',
   disabledField: '#f2f2f5',
-  gradient: ['#00b490', '#472f92']
+  gradient: ['#FF00D6', '#FF4D00']
 }
 
 const textStyle = {
@@ -95,7 +95,7 @@ const DefaultTheme = {
   rounding,
   variants: {
     tabBar: {
-      activeTintColor: colorPalette.secondary,
+      activeTintColor: Colors.PINK_RED,
       inactiveTintColor: Colors.BLUEYGREY,
       borderTopColor: colorPalette.background,
       backgroundColor: Colors.WHITE,
