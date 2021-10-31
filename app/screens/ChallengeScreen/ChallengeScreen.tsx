@@ -93,6 +93,8 @@ class ChallengeScreen extends PureComponent<
     // Check if we're at zero.
     if (seconds == 0) {
       clearInterval(this.timer);
+
+      // Send to screen Fail or alert
     }
   }
 

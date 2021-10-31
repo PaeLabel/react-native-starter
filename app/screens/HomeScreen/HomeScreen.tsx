@@ -49,7 +49,7 @@ class HomeScreen extends PureComponent<
 
   state = {
     showChallenge: true,
-    challenge: false
+    challenge: true
   };
 
   /**

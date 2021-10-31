@@ -75,6 +75,30 @@ class SearchScreen extends PureComponent<
       },
       timestamp: "2020-12-04T03:44:11",
       readed: true,
+    },
+    {
+      _id: 3,
+      title: "Test3",
+      status: false,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+      score: 100,
+      images: {
+        url: "https://miro.medium.com/max/1024/1*xDi2csEAWxu95IEkaNdFUQ.png",
+      },
+      timestamp: "2020-12-04T03:44:11",
+      readed: true,
+    },
+    {
+      _id: 4,
+      title: "Test4",
+      status: false,
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
+      score: 100,
+      images: {
+        url: "https://miro.medium.com/max/1024/1*xDi2csEAWxu95IEkaNdFUQ.png",
+      },
+      timestamp: "2020-12-04T03:44:11",
+      readed: true,
     }]
 
 

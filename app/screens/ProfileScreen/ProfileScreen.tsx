@@ -88,9 +88,7 @@ class ProfileScreen extends PureComponent<
           </View>
 
 
-          <Text style={styles.versionText}>
-            {"Demo"} (0.0.1)
-          </Text>
+
 
           <View style={styles.wrapList}>
             <TouchableOpacity
@@ -109,6 +107,11 @@ class ProfileScreen extends PureComponent<
               </View>
             </TouchableOpacity>
           </View>
+
+
+          <Text style={styles.versionText}>
+            {"Demo"} (0.0.1)
+          </Text>
 
 
         </ScrollView>
