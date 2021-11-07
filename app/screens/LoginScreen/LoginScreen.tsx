@@ -18,6 +18,7 @@ import { connect } from 'react-redux'
 import Logo from '../../assets/icons/Login/beachseat.svg'
 import Eye from '../../assets/icons/Login/eye.svg'
 import GradientButton from '../../components/Common/GradientButton/GradientButton'
+import AuthActions from '../../redux/Actions/AuthActions'
 import { RootState } from '../../redux/Store'
 import styles from './styles'
 
@@ -27,6 +28,8 @@ export type NavigationType = NavigationStackProp<{}, LoginScreenParams>
 export type LoginScreenProps = {
   title: string
   navigation: NavigationType
+
+  authLogin: any
 }
 
 type LoginScreenState = {}
@@ -55,8 +58,8 @@ class LoginScreen extends PureComponent<
   }
 
   onLogin = async () => {
-    // await this.props.authLogin(this.state.email, this.state.password)
-    this.props.navigation.navigate('App')
+    await this.props.authLogin(this.state.email, this.state.password)
+    // this.props.navigation.navigate('App')
   }
 
   showPassword = () => {
@@ -152,6 +155,7 @@ const mapStateToProps = (reduxState: RootState) => {
 }
 
 const mapDispatchToProps = {
+  ...AuthActions
 }
 
 const LoginScreenWithRedux = connect(

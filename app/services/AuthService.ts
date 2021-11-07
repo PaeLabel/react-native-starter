@@ -21,6 +21,8 @@ class AuthService implements IAuthService {
   authLogin = (email: string, password: string): Promise<APIResponse<true>> => {
     const data = { email: email, password: password }
 
+    console.log("DATATA", data)
+
     return axios({
       url: `/auth/login`,
       method: 'POST',

@@ -40,6 +40,7 @@ class ChallengeScreen extends PureComponent<
   ChallengeScreenProps & WithTranslation,
   ChallengeScreenState
 > {
+
   /**
    * Default props
    */
@@ -64,24 +65,19 @@ class ChallengeScreen extends PureComponent<
 
     let chkTime = startAccept - now
 
-    if (chkTime <= 0) {
-      console.log("END TIME")
-    }
-
-    this.setState({ second: chkTime });
-
     if (chkTime > 0) {
+
       this.setState({ second: chkTime });
       this.timer = setInterval(() => {
         this.countDown();
       }, 1000);
+    } else {
+      chkTime = 0
+      console.log("END TIME")
     }
-  }
 
-  componentWillUnmount() {
-    clearInterval(this.timer);
-  }
 
+  }
 
   countDown = () => {
     // Remove one second, set state so a re-render happens.
@@ -117,6 +113,7 @@ class ChallengeScreen extends PureComponent<
 
   handleFail = (() => {
     console.log("FAIL")
+    this.props.navigation.navigate('Home')
   })
 
 
@@ -147,8 +144,13 @@ class ChallengeScreen extends PureComponent<
           </Box>
 
           <View style={styles.boxBtn}>
-            <OutlineButton text="FINISH" onPress={this.handleFinish} width={150} color={Colors.BLACK} />
-            <Box width={20} />
+            {this.state.second > 0 &&
+              <>
+                <OutlineButton text="FINISH" onPress={this.handleFinish} width={150} color={Colors.BLACK} />
+                <Box width={20} />
+              </>
+            }
+
             <OutlineButton text="FAIL" onPress={this.handleFail} width={150} color={Colors.BLACK} />
           </View>
         </View>

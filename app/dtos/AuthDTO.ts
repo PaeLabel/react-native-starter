@@ -1,4 +1,4 @@
-import {Error} from './Generic'
+import { Error } from './Generic';
 
 export interface AuthDTO {
   data: {}
@@ -7,5 +7,8 @@ export interface AuthDTO {
 }
 
 export interface AuthStateDTO {
-  accessToken: string
+  auth: {
+    token: string,
+    refreshToken: string
+  }
 }

@@ -1,8 +1,11 @@
-import {AuthStateDTO} from '../../dtos/AuthDTO'
-import ActionTypes, {IAction} from '../ActionTypes'
+import { AuthStateDTO } from '../../dtos/AuthDTO'
+import ActionTypes, { IAction } from '../ActionTypes'
 
 export const initialState: AuthStateDTO = {
-  accessToken: '',
+  auth: {
+    token: '',
+    refreshToken: ''
+  }
 }
 
 const AuthReducer = (
@@ -23,9 +26,7 @@ const AuthReducer = (
       }
     }
     default:
-      return {
-        ...state,
-      }
+      return state
   }
 }
 

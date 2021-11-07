@@ -10,6 +10,7 @@ import {
 } from 'react-navigation-stack'
 import { connect } from 'react-redux'
 import env from '../../config/project'
+import InitialAppActions from '../../redux/Actions/InitialAppActions'
 import { Colors } from '../../theme'
 import styles from './styles'
 
@@ -25,6 +26,8 @@ export type NavigationType = NavigationStackProp<{}, LoadingScreenParams>
 export type LoadingScreenProps = {
   title: string
   navigation: NavigationType
+
+  bootstrap: any
 }
 
 /**
@@ -53,9 +56,11 @@ class LoadingScreen extends PureComponent<
   componentDidMount() {
     const { navigation } = this.props
 
-    setTimeout(() => {
-      navigation.navigate('Auth')
-    }, 1500)
+    this.props.bootstrap()
+
+    // setTimeout(() => {
+    //   navigation.navigate('Auth')
+    // }, 1500)
   }
 
   render() {
@@ -91,6 +96,7 @@ const mapStateToProps = (reduxState: any) => ({
  */
 const mapDispatchToProps = {
   // Map action creators hare
+  ...InitialAppActions
 }
 
 const LoadingScreenWithRedux = connect(

@@ -11,6 +11,8 @@ import {
 import { connect } from 'react-redux'
 import LogoutIcon from '../../assets/icons/Profile/logout_icon.svg'
 import EditIcon from '../../assets/icons/Profile/pen_icon.svg'
+import { UserDTO } from '../../dtos/UserDTO'
+import AuthActions from '../../redux/Actions/AuthActions'
 import { Theme } from '../../theme'
 import styles from './styles'
 
@@ -22,6 +24,10 @@ export type ProfileScreenProps = {
   title: string
   navigation: NavigationType
 
+  // Data
+  user: UserDTO['data']
+
+  // Function
   logout: any
 }
 
@@ -42,18 +48,12 @@ class ProfileScreen extends PureComponent<
   }
 
   handleLogout = () => {
-    this.props.navigation.navigate("Auth")
+    this.props.logout()
   }
 
   render() {
-    const { } = this.props
+    const { user } = this.props
 
-    const user = {
-      pictureUrl: null,
-      firstName: 'User',
-      lastName: 'Lastname',
-      position: 'UserTest'
-    }
 
     return (
       <SafeAreaView style={styles.safeAreaView}>
@@ -66,7 +66,7 @@ class ProfileScreen extends PureComponent<
                 <Image
                   source={{
                     uri:
-                      user.pictureUrl ||
+                      user.profileUrl ||
                       'https://bpnsgdvsmcsa.blob.core.windows.net/general/DEFAULT_USER_ICON_40.png',
                   }}
                   style={styles.imageUser}
@@ -77,7 +77,7 @@ class ProfileScreen extends PureComponent<
                   {user.firstName} {user.lastName}
                 </Text>
                 <Text style={styles.profileDescText}>
-                  {user.position}
+                  ({user.email})
                 </Text>
               </View>
             </View>
@@ -123,6 +123,7 @@ class ProfileScreen extends PureComponent<
 
 const mapStateToProps = (reduxState: any) => ({
   // Selected redux state hare
+  user: reduxState.UserState.user.data
 })
 
 /**
@@ -130,6 +131,7 @@ const mapStateToProps = (reduxState: any) => ({
  */
 const mapDispatchToProps = {
   // Map action creators hare
+  ...AuthActions
 }
 
 const ProfileScreenWithRedux = connect(

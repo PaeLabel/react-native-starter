@@ -5,11 +5,11 @@ import _ from 'lodash'
  * Axios middleware
  *
  */
-const axiosMiddleware = ({getState}: any) => (next: (arg0: any) => any) => (
+const axiosMiddleware = ({ getState }: any) => (next: (arg0: any) => any) => (
   action: any,
 ) => {
   // add token to axios header
-  const authToken = _.get(getState(), 'AuthState.accessToken')
+  const authToken = _.get(getState(), 'AuthState.auth.token')
 
   axios.defaults.headers.common.Authorization = authToken
     ? `Bearer ${authToken}`

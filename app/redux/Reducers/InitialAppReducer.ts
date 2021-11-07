@@ -1,9 +1,10 @@
 import InitialAppStateDTO from '../../dtos/InitialAppStateDTO'
-import ActionTypes, {IAction} from '../ActionTypes'
+import ActionTypes, { IAction } from '../ActionTypes'
 
 export const initialState: InitialAppStateDTO = {
   isLoaded: false,
   hasViewWalkThrough: false,
+  isAppDataLoaded: false,
 }
 
 const InitialAppReducer = (
