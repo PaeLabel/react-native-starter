@@ -9,6 +9,7 @@ import {
 } from 'react-navigation-stack'
 import { connect } from 'react-redux'
 import ChallengeMainComponent from '../../components/Search/ChallengeMainComponent/ChallengeMainComponent'
+import ChallengeActions from '../../redux/Actions/ChallengeActions'
 import styles from './styles'
 
 
@@ -24,6 +25,13 @@ export type NavigationType = NavigationStackProp<{}, SearchScreenParams>
 export type SearchScreenProps = {
   title: string
   navigation: NavigationType
+
+  challengs: any
+  userId: string
+
+  // action
+  getChallengeByUser: any
+
 }
 
 /**
@@ -49,58 +57,12 @@ class SearchScreen extends PureComponent<
     title: 'Search', // Set navbar text title
   }
 
+  componentDidMount() {
+    this.props.getChallengeByUser(this.props.userId)
+  }
+
   render() {
-    const { title } = this.props
-
-    const data = [{
-      _id: 0,
-      title: "Test1",
-      status: true,
-      description: "Description test",
-      score: 100,
-      images: {
-        url: "https://miro.medium.com/max/1024/1*xDi2csEAWxu95IEkaNdFUQ.png",
-      },
-      timestamp: "2020-12-04T03:44:11",
-      readed: true,
-    },
-    {
-      _id: 1,
-      title: "Test2",
-      status: false,
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
-      score: 100,
-      images: {
-        url: "https://miro.medium.com/max/1024/1*xDi2csEAWxu95IEkaNdFUQ.png",
-      },
-      timestamp: "2020-12-04T03:44:11",
-      readed: true,
-    },
-    {
-      _id: 3,
-      title: "Test3",
-      status: false,
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
-      score: 100,
-      images: {
-        url: "https://miro.medium.com/max/1024/1*xDi2csEAWxu95IEkaNdFUQ.png",
-      },
-      timestamp: "2020-12-04T03:44:11",
-      readed: true,
-    },
-    {
-      _id: 4,
-      title: "Test4",
-      status: false,
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy",
-      score: 100,
-      images: {
-        url: "https://miro.medium.com/max/1024/1*xDi2csEAWxu95IEkaNdFUQ.png",
-      },
-      timestamp: "2020-12-04T03:44:11",
-      readed: true,
-    }]
-
+    const { challengs } = this.props
 
 
     return (
@@ -108,7 +70,7 @@ class SearchScreen extends PureComponent<
         <View style={styles.searchScreen}>
           <ChallengeMainComponent
             navigation={this.props.navigation}
-            data={data}
+            data={challengs}
           />
         </View>
       </SafeAreaView>
@@ -121,6 +83,8 @@ class SearchScreen extends PureComponent<
  */
 const mapStateToProps = (reduxState: any) => ({
   // Selected redux state hare
+  challengs: reduxState.ChallengeState.userChallenge || [],
+  userId: reduxState.UserState.user.data._id || ""
 })
 
 /**
@@ -128,6 +92,7 @@ const mapStateToProps = (reduxState: any) => ({
  */
 const mapDispatchToProps = {
   // Map action creators hare
+  ...ChallengeActions
 }
 
 const SearchScreenWithRedux = connect(

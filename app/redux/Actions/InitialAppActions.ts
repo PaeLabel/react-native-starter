@@ -32,6 +32,8 @@ export class InitialAppActions implements IInitialAppActions {
     }
     const payload: any = jwt_decode(token)
 
+    console.log(payload)
+
     await dispatch(UserActions.getUser(payload._id))
 
     // await dispatch(this.loadAppData())

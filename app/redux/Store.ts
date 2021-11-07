@@ -1,4 +1,3 @@
-
 import AsyncStorage from '@react-native-community/async-storage'
 import { applyMiddleware, combineReducers, compose, createStore, Store } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
@@ -8,6 +7,7 @@ import thunk, { ThunkDispatch } from 'redux-thunk'
 import axiosMiddleware from '../config/axiosMiddleware'
 import ActionTypes, { IAction } from './ActionTypes'
 import AuthReducer, { initialState as AuthState } from './Reducers/AuthReducer'
+import ChallengeReducer, { initialState as ChallengeState } from './Reducers/ChallengeReducer'
 import InitialAppReducer, {
   initialState as InitialAppState
 } from './Reducers/InitialAppReducer'
@@ -36,6 +36,7 @@ export type RootState = {
   InitialAppState: typeof InitialAppState
   AuthState: typeof AuthState
   UserState: typeof UserState
+  ChallengeState: typeof ChallengeState
   // auto-state-type
 }
 
@@ -52,6 +53,7 @@ export default function configureStore() {
     InitialAppState: persistReducer(initialAppPersistConfig, InitialAppReducer),
     AuthState: AuthReducer,
     UserState: UserReducer,
+    ChallengeState: ChallengeReducer,
     // auto-plugin
   })
 

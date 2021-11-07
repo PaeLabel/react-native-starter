@@ -22,6 +22,9 @@ enum ActionTypes {
   USER_INIT = 'USER_INIT',
   USER_CHANGE = 'USER_CHANGE',
 
+  /** Challenge  */
+  CHALLENGE_INIT = 'CHALLENGE_INIT',
+  CHALLENGE_CHANGE = 'CHALLENGE_CHANGE',
   // auto-plugin
 }
 

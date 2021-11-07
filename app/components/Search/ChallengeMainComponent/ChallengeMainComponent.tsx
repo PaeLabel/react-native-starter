@@ -14,15 +14,18 @@ export type ChallengeMainComponentProps = {
   navigation: any,
   data: {
     _id: number,
-    title: string,
-    status: boolean,
-    description: string,
-    score: number,
-    images: {
-      url: string
-    },
-    timestamp: any,
+    status: string,
+    isFinish: boolean,
+    imgUrl: string,
+    createdAt: any,
+    updatedAt: any,
     readed: boolean,
+    challengeDetail: {
+      title: string,
+      description: string,
+      point: number,
+      imgUrl: ""
+    }[]
   }[],
 }
 
@@ -39,7 +42,7 @@ const ChallengeMainComponent = ({ navigation, data, t }: ChallengeMainComponentP
       >
         <View
           key={`challengeComp${item._id}`}
-          style={{ ...styles.ChallengeMainComponent, backgroundColor: item.readed ? Colors.WHITE : Colors.BLUEYGREY }}
+          style={{ ...styles.ChallengeMainComponent, backgroundColor: item.isFinish ? Colors.WHITE : Colors.BLUEYGREY }}
         >
           <View style={styles.container}>
 
@@ -49,7 +52,7 @@ const ChallengeMainComponent = ({ navigation, data, t }: ChallengeMainComponentP
 
               <View style={styles.imageViewContainer}>
                 <Image
-                  source={{ uri: item.images.url }}
+                  source={{ uri: item.imgUrl }}
                   style={styles.imageContainer}
                   resizeMode='cover'
                 />
@@ -62,7 +65,7 @@ const ChallengeMainComponent = ({ navigation, data, t }: ChallengeMainComponentP
                   numberOfLines={2}
                   ellipsizeMode='tail'
                 >
-                  {item.title}
+                  {item.challengeDetail[0].title}
 
                 </Text>
 
@@ -72,11 +75,11 @@ const ChallengeMainComponent = ({ navigation, data, t }: ChallengeMainComponentP
                   ellipsizeMode='tail'
                   style={styles.notiDescText}
                 >
-                  {item.description}
+                  {item.challengeDetail[0].description}
                 </Text>
 
                 {/* Noti DateTime */}
-                <ChallengeDateComponent dateTime={item.timestamp} />
+                <ChallengeDateComponent dateTime={item.updatedAt} />
               </View>
 
 
